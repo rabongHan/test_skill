@@ -1,19 +1,33 @@
 const apiRouter = require("express").Router();
-apiRouter.post('/sayHello', function(req, res) {
+
+const School = require('school-kr')
+const school = new School()
+
+school.init(School.Type.HIGH, School.Region.GYEONGGI, 'J100005286')
+const example = async function() {
+  const meal = await school.getMeal();
+  return(meal)
+}
+
+
+
+apiRouter.post('/meal', async function(req, res) {
+   const result = await example();
    console.log(req.body);
+   
    const responseBody = {
      version: "2.0",
      template: {
        outputs: [
          {
            simpleText: {
-             text: "hello I'm Ryan"
+             text: result
            }
          }
        ]
      }
    };
-   
+
    res.status(200).send(responseBody);
  });
 module.exports = apiRouter;
