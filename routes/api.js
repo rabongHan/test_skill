@@ -4,15 +4,17 @@ const School = require('school-kr')
 const school = new School()
 
 school.init(School.Type.HIGH, School.Region.GYEONGGI, 'J100005286')
-const example = async function() {
-  const meal = await school.getMeal();
-  return(meal)
-}
+// const example = async function() {
+//   const meal = await school.getMeal();
+//   return(meal)
+// }
 
 
 
 apiRouter.post('/meal', async function(req, res) {
-   const result = await example();
+  //  const result = await example();
+   const meal = await school.getMeal();
+   const printing = meal[24]
    console.log(req.body);
    
    const responseBody = {
@@ -21,7 +23,7 @@ apiRouter.post('/meal', async function(req, res) {
        outputs: [
          {
            simpleText: {
-             text: result
+             text: printing
            }
          }
        ]
