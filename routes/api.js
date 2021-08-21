@@ -9,12 +9,18 @@ school.init(School.Type.HIGH, School.Region.GYEONGGI, 'J100005286')
 //   return(meal)
 // }
 
-
+apiRouter.get('/input', function(req, res) {
+   const data = {'type' : 'text'}
+   res.json(data);  
+});
 
 apiRouter.post('/meal', async function(req, res) {
-  //  const result = await example();
+   //  const result = await example();
+   console.log("맛있는 식사 되세요!")
+   const dateInfo = req.body.userRequest.utterance; 
+
    const meal = await school.getMeal();
-   const printing = meal[24]
+   const printing = meal[dateInfo]
    console.log(req.body);
    
    const responseBody = {
