@@ -9,7 +9,7 @@ school.init(School.Type.HIGH, School.Region.GYEONGGI, 'J100005286')
 //   return(meal)
 // }
 
-apiRouter.get('/input', function(req, res) {
+apiRouter.get('/keyboard', function(req, res) {
    const data = {'type' : 'text'}
    res.json(data);  
 });
