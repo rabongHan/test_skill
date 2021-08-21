@@ -38,7 +38,7 @@ apiRouter.post('/meal', async function(req, res) {
    const monthlymeal_result = monthlydatetime.substring(9,11);
 
    const meal2 = await school.getMeal({default: '이 날은 급식이 없습니다.'});
-   const monthly_printing = meal[monthlymeal_result];
+   const monthly_printing = meal2[monthlymeal_result];
    console.log(req.body);
 
    const responseBody = {
