@@ -16,10 +16,9 @@ apiRouter.get('/keyboard', function(req, res) {
 
 apiRouter.post('/meal', async function(req, res) {
    //  const result = await example();
-   console.log("맛있는 식사 되세요!")
    const dateInfo = req.body.userRequest.utterance; 
 
-   const meal = await school.getMeal();
+   const meal = await school.getMeal({default: '이 날은 급식이 없습니다.'});
    const printing = meal[dateInfo]
    console.log(req.body);
    
@@ -29,7 +28,7 @@ apiRouter.post('/meal', async function(req, res) {
        outputs: [
          {
            simpleText: {
-             text: printing
+             text: `${meal.month}월 ${meal.day}일 급식정보` + printing
            }
          }
        ]
